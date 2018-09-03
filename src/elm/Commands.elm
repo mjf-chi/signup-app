@@ -14,6 +14,7 @@ createTempUser model =
     tempUserBody =
       [ ( "firstname", Encode.string model.firstname )
       , ( "lastname", Encode.string model.lastname )
+      , ( "zipcode", Encode.string model.zipcode )
       , ( "phone", Encode.string model.phone )
       ]
         |> Encode.object
@@ -81,4 +82,4 @@ decodeApiResponse =
 
 
 balooAPIUrl : String
-balooAPIUrl = "http://localhost:8081"
+balooAPIUrl = "http://localhost:8081" -- "https://api.baloo.org"

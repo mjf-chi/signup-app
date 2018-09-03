@@ -17,6 +17,7 @@ matchers =
     [ UrlParser.map Home top
     , UrlParser.map Home (s "signup")
     , UrlParser.map EnterName (s "name")
+    , UrlParser.map EnterZip (s "zipcode")
     , UrlParser.map EnterPhone (s "phone")
     , UrlParser.map EnterCode (s "confirm")
     , UrlParser.map ThankYou (s "complete")
@@ -55,6 +56,11 @@ homePath =
 signupNamePath : String
 signupNamePath =
   "name"
+
+
+signupZipcodePath : String
+signupZipcodePath =
+  "zipcode"
 
 
 signupPhonePath : String

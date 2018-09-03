@@ -7,6 +7,7 @@ import Navigation exposing (Location)
 type Route
   = Home
   | EnterName
+  | EnterZip
   | EnterPhone
   | EnterCode
   | ThankYou
@@ -20,9 +21,11 @@ type alias Model =
   , changes : Int
   , firstname : String
   , lastname : String
+  , zipcode : String
   , phone : String
   , code : String
   , error : String
+  , loading : Bool
   , httpResponse : String
   }
 
@@ -44,9 +47,11 @@ initialModel route =
   , changes = 0
   , firstname = ""
   , lastname = ""
+  , zipcode = ""
   , phone = ""
   , code = ""
   , error = ""
+  , loading = False
   , httpResponse = ""
   }
 

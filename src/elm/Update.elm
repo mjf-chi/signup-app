@@ -5,7 +5,6 @@ import Models exposing (..)
 import Routing exposing (..)
 import Commands exposing (..)
 import Navigation
-import Debug exposing (..)
 
 
 update : Msg -> Model -> (Model, Cmd Msg)
@@ -23,26 +22,35 @@ update msg model =
     Msg.InputLastname name ->
       ( { model | lastname = name }, Cmd.none )
 
+    Msg.InputZipcode zip ->
+      ( { model | zipcode = zip }, Cmd.none )
+
     Msg.InputPhone phone ->
       ( { model | phone = phone }, Cmd.none )
 
     Msg.CreateTemporaryUser ->
-      ( model, createTempUser model )
+      ( { model | loading = True }, createTempUser model )
 
     Msg.TempUserCreated (Ok res) ->
-       update (Msg.ChangeLocation signupCodePath) { model | httpResponse = toString(res) }
+       update (Msg.ChangeLocation signupCodePath) { model |
+                                                      httpResponse = toString(res)
+                                                      , loading = False }
 
     Msg.TempUserCreated (Err err) ->
-       update (Msg.ChangeLocation signupCodePath) { model | error = toString(err) }
+       ( { model |
+             error = "Invalid phone number"
+             , loading = False }, Cmd.none )
 
     Msg.ConfirmCode ->
-      ( model, confirmCode model )
+      ( { model | loading = True }, confirmCode model )
 
     Msg.CodeConfirmed (Ok res) ->
-      update (Msg.ChangeLocation thankyouPath) model
+      update (Msg.ChangeLocation thankyouPath) { model | loading = False }
 
     Msg.CodeConfirmed (Err err) ->
-      update (Msg.ChangeLocation thankyouPath) model
+      ( { model |
+            error = "There was an error with the code you entered, try again!"
+            , loading = False }, Cmd.none )
 
     Msg.InputCode code ->
       ( { model | code = code }, Cmd.none )

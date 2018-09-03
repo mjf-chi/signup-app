@@ -3,7 +3,6 @@ module PhoneForm exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
-import Html exposing (..)
 import Models exposing (..)
 import Msg exposing (..)
 
@@ -11,11 +10,27 @@ import Msg exposing (..)
 
 view : Model -> Html Msg
 view model =
-  div []
-    [ div [] [ text "Enter your phone number so we can give you the latest sustainable actions!" ]
-    , input [ onInput InputPhone, value model.phone ] []
-    , button [ onClick ( submit model ) ] [ text "Confirm Number" ]
-    ]
+  div [ class "form-page" ] [
+    div [ class "form-page-container" ]
+      [ div [ class "logo-container" ] [
+          span [ class "form-page-logo" ] [ text "baloo" ]
+          , span [ class "form-page-sublogo" ] [ text "sign up" ]
+      ]
+      , div [ class "form-page-nav" ] [
+          div [ class "form-page-option" ] [ text "Name" ]
+          , div [ class "form-page-option" ] [ text "Area" ]
+          , div [ class "form-page-option option-active" ] [ text "Contact" ]
+          , div [ class "form-page-option" ] [ text "Confirmation" ]
+      ]
+      , div [ class "phoneform-text-container" ] [
+          span [ class "phoneform-text" ] [ text "Baloo can send me weekly action texts at" ]
+          , input [ class "form-input phone-input", placeholder "phone number", Html.Attributes.attribute "onfocus" "this.placeholder=''", onInput InputPhone, value model.phone] []
+          , span [ class "phoneform-text" ] [ text "." ]
+          , div [ class "phoneform-subtext" ] [ text "Baloo is free but standard messaging and data rates may apply through your provider." ]
+      ]
+      , button [ class "next-button", onClick ( submit model ) ] []
+      ]
+  ]
 
 
 

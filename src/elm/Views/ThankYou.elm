@@ -1,1 +1,0 @@
-module ThankYou exposing (..)

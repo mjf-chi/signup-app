@@ -11,6 +11,7 @@ type Msg
   | OnLocationChange Location
   | InputFirstname String
   | InputLastname String
+  | InputZipcode String
   | InputPhone String
   | CreateTemporaryUser
   | TempUserCreated ( Result Http.Error ApiResponse )

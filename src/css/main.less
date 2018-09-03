@@ -1,4 +1,10 @@
 @import "home.less";
+@import "nameform.less";
+@import "zipform.less";
+@import "phoneform.less";
+@import "codeform.less";
+@import "loading.less";
+
 
 html {
   width: 100%;
@@ -10,8 +16,134 @@ html {
 body {
   width: 100%;
   height: 100%;
+  margin: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
   background-color: none;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+#main {
+  width: 100%;
+  height: 100%;
+}
+
+//
+// form page standards
+//
+.form-page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.form-page-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container {
+  margin-top: 170px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.form-page-logo {
+  font-size: 54px;
+  font-weight: 600;
+  color: #6C7DEE;
+}
+
+.form-page-sublogo {
+  margin-left: 15px ;
+  font-size: 30px;
+  font-weight: 500;
+  color: #6C7DEE;
+}
+
+.form-page-nav {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+}
+
+.form-page-option {
+  flex: 1;
+  margin-top: 50px;
+  font-size: 20px;
+  color: #64A4EB;
+}
+
+.option-active {
+  color: #F2A150;
+}
+
+.form-input {
+  width: 300px;
+  margin-right: 4px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #6C7DEE;
+  padding-left: 10px;
+  font-size: 42px;
+  font-weight: 500;
+  color: #3D8DE6;
+  text-align: center;
+  &:focus {
+    outline: 0px;
+  }
+  &:active {
+    outline: 0px;;
+  }
+}
+
+.next-button {
+  width: 92px;
+  height: 92px;
+  background-color: #fff;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-left: none;
+  background-position: center;
+  background-size: cover;
+  background-image: url("http://storage.googleapis.com/baloo-media/image/next-icon.png");
+  cursor: pointer;
+  &:hover {
+    background-image: url("https://storage.googleapis.com/baloo-media/image/next-icon-blue.png");
+  }
+  &:focus {
+    background-image: url("https://storage.googleapis.com/baloo-media/image/next-icon-blue.png");
+    outline: 0px;
+  }
+}
+
+
+.form-complete-container {
+  max-width: 550px;
+  margin-top: 160px;
+  margin-bottom: 60px;
+  color: #F2A150;
+  text-align: center;
+}
+
+.form-complete-text {
+  font-size: 38px;
+  font-weight: 500;
+}
+
+.form-complete {
+  font-size: 18px;
+  color: #6C7DEE;
 }

@@ -24,6 +24,7 @@ init location =
   let
     currentRoute =
       Routing.parseLocation location
+
   in
     ( initialModel currentRoute, Cmd.none )
 
